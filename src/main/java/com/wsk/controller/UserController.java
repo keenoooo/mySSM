@@ -164,8 +164,10 @@ public class UserController {
     public Map certification(HttpServletRequest request,
                              @RequestParam(required = false) String userName,
                              @RequestParam(required = false) String realName,
-                             @RequestParam(required = false) String clazz, @RequestParam String token,
-                             @RequestParam(required = false) String sno, @RequestParam(required = false) String dormitory,
+                             @RequestParam(required = false) String clazz,
+                             @RequestParam String token,
+                             @RequestParam(required = false) String sno,
+                             @RequestParam(required = false) String dormitory,
                              @RequestParam(required = false) String gender) {
         UserInformation userInformation = (UserInformation) request.getSession().getAttribute("userInformation");
         Map<String, Integer> map = new HashMap<>();
@@ -214,6 +216,11 @@ public class UserController {
         }
         if (gender != null && gender.length() <= 2) {
             gender = StringUtils.getInstance().replaceBlank(gender);
+            if(gender.equals("1")){
+                gender = "男";
+            }else{
+                gender = "女";
+            }
             userInformation.setGender(gender);
         } else if (gender != null && gender.length() > 2) {
             return map;
@@ -233,13 +240,13 @@ public class UserController {
     @RequestMapping(value = "/require_product")
     public String enterPublishUserWant(HttpServletRequest request, Model model) {
         UserInformation userInformation = (UserInformation) request.getSession().getAttribute("userInformation");
-        if (StringUtils.getInstance().isNullOrEmpty(userInformation)) {
-            return "redirect:login";
-        }
-        String error = request.getParameter("error");
-        if (!StringUtils.getInstance().isNullOrEmpty(error)) {
-            model.addAttribute("error", "error");
-        }
+        //if (StringUtils.getInstance().isNullOrEmpty(userInformation)) {
+        //    return "redirect:login";
+        //}
+        //String error = request.getParameter("error");
+        //if (!StringUtils.getInstance().isNullOrEmpty(error)) {
+        //    model.addAttribute("error", "error");
+        //}
         String publishUserWantToken = TokenProccessor.getInstance().makeToken();
         request.getSession().setAttribute("publishUserWantToken", publishUserWantToken);
         model.addAttribute("token", publishUserWantToken);
@@ -642,7 +649,7 @@ public class UserController {
                 return "redirect:publish_product?error=请插入图片";
             }
             String random;
-            String path = "D:\\",save="";
+            String path = "E:\\code\\IdeaProjects\\mySSM\\image\\",save="";
             random = "image\\" + StringUtils.getInstance().getRandomChar() + new Date().getTime() + ".jpg";
             StringBuilder thumbnails = new StringBuilder();
             thumbnails.append(path);
@@ -660,7 +667,7 @@ public class UserController {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            String pornograp = Pornographic.CheckPornograp("D:\\" + random);
+            String pornograp = Pornographic.CheckPornograp("E:\\code\\IdeaProjects\\mySSM\\image\\" + random);
             if (pornograp.equals("色情图片")) {
                 return "redirect:publish_product?error=不能使用色情图片";
             }

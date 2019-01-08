@@ -5,6 +5,8 @@ import com.wsk.pojo.UserPassword;
 import com.wsk.service.UserInformationService;
 import com.wsk.service.UserPasswordService;
 import com.wsk.tool.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,8 +29,8 @@ public class RegisterController {
 
     @Resource
     private UserInformationService userInformationService;
-
-    //开始注册用户
+    //SLF4j打印日志
+    private Logger log = LoggerFactory.getLogger(this.getClass());
     @RequestMapping("/insertUser")
     @ResponseBody
     public Map insertUser(HttpServletRequest request, Model model,
@@ -53,7 +55,7 @@ public class RegisterController {
                 return map;
             }
         } catch (Exception e) {
-            e.printStackTrace();
+           log.error("查询手机号是否存在时发生错误！");
             map.put("result",0);
             return map;
         }

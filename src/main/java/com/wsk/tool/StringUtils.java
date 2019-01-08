@@ -106,7 +106,7 @@ public class StringUtils {
     public ArrayList readTxt() throws IOException {
         ArrayList<String> list = new ArrayList<>();
         String encoding = "GBK";
-        File file = new File("D:\\image\\txt\\all.txt");
+        File file = new File("E:\\code\\IdeaProjects\\mySSM\\txt\\all.txt");
         InputStreamReader reader = new InputStreamReader(new FileInputStream(file), encoding);
         BufferedReader bufferedReader = new BufferedReader(reader);
         String txt;

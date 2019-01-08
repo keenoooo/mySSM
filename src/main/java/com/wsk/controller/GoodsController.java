@@ -87,7 +87,10 @@ public class GoodsController {
     public String findByName(HttpServletRequest request, Model model,
                              @RequestParam String name) {
         try {
-            List<ShopInformation> shopInformations = shopInformationService.selectByName(name);
+            name = name.trim();
+            ShopInformation s = new ShopInformation();
+            s.setName(name);
+            List<ShopInformation> shopInformations = shopInformationService.selectByName(s);
             UserInformation userInformation = (UserInformation) request.getSession().getAttribute("userInformation");
             if (StringUtils.getInstance().isNullOrEmpty(userInformation)) {
                 userInformation = new UserInformation();
@@ -96,7 +99,7 @@ public class GoodsController {
                 model.addAttribute("userInformation", userInformation);
             }
             List<ShopInformationBean> shopInformationBeans = new ArrayList<>();
-            String sortName;
+            String sortName ;
             for (ShopInformation shopInformation : shopInformations) {
                 int sort = shopInformation.getSort();
                 sortName = getSort(sort);

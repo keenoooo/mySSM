@@ -73,8 +73,8 @@ public class ShopInformationServiceImpl implements ShopInformationService{
     }
 
     @Override
-    public List<ShopInformation> selectByName(String name){
-        return shopInformationMapper.selectByName(name);
+    public List<ShopInformation> selectByName(ShopInformation shopInformation){
+        return shopInformationMapper.selectByName(shopInformation);
     }
 
     @Override

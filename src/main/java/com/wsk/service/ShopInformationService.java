@@ -31,7 +31,7 @@ public interface ShopInformationService {
 
     int selectIdByImage(String image);
 
-    List<ShopInformation> selectByName(String name);
+    List<ShopInformation> selectByName(ShopInformation shopInformation);
 
     List<ShopInformation> selectBySort(int sort);
 

@@ -1,61 +1,71 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
     <meta charset="utf-8"/>
-    <title>错误！！！！</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <style>
 
-        * {
-            line-height: 1.2;
-            margin: 0;
-        }
+    <title>404 - 页面未找到</title>
 
-        html {
-            color: #000;
-            display: table;
-            font-family: sans-serif;
-            height: 100%;
-            text-align: center;
-            width: 100%;
-			background:#cccccc
-        }
-
+    <style type="text/css">
         body {
-            display: table-cell;
-            vertical-align: middle;
-            margin: 2em auto;
-			
+            background-color: #0099CC;
+            color: #FFFFFF;
+            font-family: Microsoft Yahei, "Helvetica Neue", Helvetica, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+            margin-left: 100px;
+        }
+        .face {
+            font-size: 100px;
+        }
+        p{
+            font-size: 24px;
+            padding: 8px;
+            line-height: 40px;
+        }
+        .tips {
+            font-size: 16px
         }
 
-        h1 {
-            color: #ff0000;
-            font-size: 2em;
-            font-weight: 400;
-        }
-
-        p {
-            margin: 0 auto;
-            width: 280px;
-        }
-
-        @media only screen and (max-width: 280px) {
-
-            body, p {
-                width: 95%;
+        /*针对小屏幕的优化*/
+        @media screen and (max-width: 600px) {
+            body{
+                margin: 0 10px;
             }
-
-            h1 {
-                font-size: 1.5em;
-                margin: 0 0 0.3em;
+            p{
+                font-size: 18px;
+                line-height: 30px;
             }
-
+            .tips {
+                display: inline-block;
+                padding-top: 10px;
+                font-size: 14px;
+                line-height: 20px;
+            }
         }
-
     </style>
 </head>
+
 <body>
-    <h1>错误！！！！</h1>
-    <p>对不起，您进行了错误的操作或者进行了非法的操作！！请进行正确合法的操作。谢谢合作！</p>
+<script>
+    var i = 5;  //这里是倒计时的秒数
+    var intervalid;
+    intervalid = setInterval("cutdown()", 1000);
+    function cutdown() {
+        if (i == 0) {
+            window.location.href = "http://localhost:8989"; //倒计时完成后跳转的地址
+            clearInterval(intervalid);
+        }
+        document.getElementById("mes").innerHTML = i;
+        i--;
+    }
+    window.onload = cutdown;
+</script>
+
+<span class="face">:(</span>
+<p>您访问的页面没有找到。
+    </br>
+    <span id="mes"></span> 秒后转至首页，您可以在那里试着找找您所需要的信息。</br>
+    <span class="tips">如果您想了解更多信息，则可以稍后在线搜索此错误: 算了你还是别搜了……</span>
+</p>
 </body>
 </html>

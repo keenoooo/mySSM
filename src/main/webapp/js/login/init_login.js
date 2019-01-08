@@ -4,7 +4,7 @@
 $(function () {
     //1 注册，2忘记密码
     var from_which = 0;
-//            !!!!!旋转操作无论如何根据都是根据开始位置！！！
+    //!!!!!旋转操作无论如何根据都是根据开始位置！！！
     $('.enter_password').hide(0);
     $('.flip_to_register').bind('click', function () {
         $('.enter_password').show(500);
@@ -32,6 +32,7 @@ $(function () {
     $('.go_enter_password_button').bind('click', function () {
         from_which = 1;
         var name = $('.input_nickname').val();
+        debugger;
         var phone = $('.register_input_phone').val();
         var code = $('.register_input_vcode').val();
         var token = $('.token').val();
@@ -45,6 +46,7 @@ $(function () {
             type: 'post',
             data: {name: name, phone: phone, code: code,token:token},
             success: function (data) {
+                alert(data);
                 var result = data.result;
                 if (result === 0) {
                     alert('验证码错误');
@@ -85,7 +87,7 @@ $(function () {
                     } else if (result === 0) {
                         alert('发送了错误，0但是我不说');
                     } else {
-                        alert('发送了错误，但是我不说');
+                        alert('发生了未知错误，请重试');
                     }
                 }
 
@@ -103,7 +105,7 @@ $(function () {
                     } else if (result === 0) {
                         alert('发送了错误，0但是我不说');
                     } else {
-                        alert('发送了错误，但是我不说');
+                        alert('发生了未知错误，请重试');
                     }
                 }
 
@@ -265,7 +267,7 @@ $(function () {
                 } else if (result === '-1') {
                     alert('该手机号码已经被注册了');
                 } else {
-                    alert('发送了错误，但是我不告诉你');
+                    alert('发生了未知错误，请重试');
                 }
             }
 
@@ -293,7 +295,7 @@ $(function () {
                 } else if (result === '-1') {
                     alert('不存在该手机的用户');
                 } else {
-                    alert('发送了错误，但是我不告诉你');
+                    alert('发生了未知错误，请重试');
                 }
             }
 

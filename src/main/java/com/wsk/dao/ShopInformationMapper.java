@@ -29,7 +29,7 @@ public interface ShopInformationMapper {
 
     int selectIdByImage(String image);
 
-    List<ShopInformation> selectByName(String name);
+    List<ShopInformation> selectByName(ShopInformation shopInformation);
 
     //通过分类选择
     @Select("select * from shopinformation where sort=#{sort} and display =1 limit 12")
