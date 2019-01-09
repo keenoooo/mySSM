@@ -53,8 +53,6 @@ public class GoodsController {
         UserInformation userInformation = (UserInformation) request.getSession().getAttribute("userInformation");
         if (StringUtils.getInstance().isNullOrEmpty(userInformation)) {
             //如果没有登录
-//            userInformation = new UserInformation();
-//            model.addAttribute("userInformation", userInformation);
             return "redirect:login";
         } else {
             model.addAttribute("userInformation", userInformation);
@@ -62,10 +60,10 @@ public class GoodsController {
         //如果登录了，判断该用户有没有经过认证
         try {
             String realName = userInformation.getRealname();
-            String clazz = userInformation.getClazz();
+            //String clazz = userInformation.getClazz();
             String sno = userInformation.getSno();
             String dormitory = userInformation.getDormitory();
-            if (StringUtils.getInstance().isNullOrEmpty(realName) || StringUtils.getInstance().isNullOrEmpty(clazz) || StringUtils.getInstance().isNullOrEmpty(sno) || StringUtils.getInstance().isNullOrEmpty(dormitory)) {
+            if (StringUtils.getInstance().isNullOrEmpty(realName) || /*StringUtils.getInstance().isNullOrEmpty(clazz) ||*/ StringUtils.getInstance().isNullOrEmpty(sno) || StringUtils.getInstance().isNullOrEmpty(dormitory)) {
                 //没有
                 model.addAttribute("message", "请先认证真实信息");
                 return "redirect:personal_info";

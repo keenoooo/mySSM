@@ -76,8 +76,7 @@ public class UserController {
     @RequestMapping(value = "/logout")
     public String logout(HttpServletRequest request) {
         try {
-//            UserInformation userInformation = (UserInformation) request.getSession().getAttribute("userInformation");
-//        SaveSession.getInstance().remove(userInformation.getPhone());
+
             request.getSession().removeAttribute("userInformation");
             request.getSession().removeAttribute("uid");
             System.out.println("logout");
@@ -127,7 +126,6 @@ public class UserController {
     public String login(HttpServletRequest request,
                      @RequestParam String phone, @RequestParam String password, @RequestParam String token) {
         String loginToken = (String) request.getSession().getAttribute("token");
-//        Map<String, Integer> map = new HashMap<>();
         if (StringUtils.getInstance().isNullOrEmpty(phone) || StringUtils.getInstance().isNullOrEmpty(password)) {
             return "redirect:/login";
         }
