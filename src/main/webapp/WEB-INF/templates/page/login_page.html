@@ -44,6 +44,9 @@
                     <div class="go_forget_password">
                         <a class="go_to_forget" href="#">忘记密码?</a>
                     </div>
+                    <div class="login_message">
+                        <span th:text="${session.login_error}" name="error_msg" ></span>
+                    </div>
                     <div class="login_button_div">
                         <button class="login_button">登录</button>
                     </div>

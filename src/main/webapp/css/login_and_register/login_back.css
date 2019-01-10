@@ -265,6 +265,10 @@ a.go_to_forget{
     color: white;
     text-decoration: none;
 }
+.login_message {
+    text-align: center;
+    color: darkred;
+}
 .register_info {
     margin-left: 4%;
     width: 100%;

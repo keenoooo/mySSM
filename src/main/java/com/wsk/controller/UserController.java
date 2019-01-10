@@ -6,6 +6,7 @@ import com.wsk.bean.UserWantBean;
 import com.wsk.pojo.*;
 import com.wsk.service.*;
 import com.wsk.token.TokenProccessor;
+import com.wsk.tool.Error;
 import com.wsk.tool.OCR;
 import com.wsk.tool.Pornographic;
 import com.wsk.tool.SaveSession;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import javax.jws.WebParam;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.math.BigDecimal;
@@ -79,6 +81,7 @@ public class UserController {
 
             request.getSession().removeAttribute("userInformation");
             request.getSession().removeAttribute("uid");
+            request.getSession().removeAttribute("login_error");
             System.out.println("logout");
         } catch (Exception e) {
             e.printStackTrace();
@@ -123,7 +126,7 @@ public class UserController {
 
     //验证登录
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(HttpServletRequest request,
+    public String login(HttpServletRequest request,Model model,
                      @RequestParam String phone, @RequestParam String password, @RequestParam String token) {
         String loginToken = (String) request.getSession().getAttribute("token");
         if (StringUtils.getInstance().isNullOrEmpty(phone) || StringUtils.getInstance().isNullOrEmpty(password)) {
@@ -133,7 +136,9 @@ public class UserController {
         if (StringUtils.getInstance().isNullOrEmpty(token) || !token.equals(loginToken)) {
             return "redirect:/login";
         }
-        boolean b = getId(phone, password, request);
+        boolean b = false;
+
+        b = getId(phone, password, request,model);
         //失败，不存在该手机号码
         if (!b) {
             return "redirect:/login";
@@ -1082,22 +1087,30 @@ public class UserController {
     }
 
     //判断该手机号码及其密码是否一一对应
-    private boolean getId(String phone, String password, HttpServletRequest request) {
-        int uid = userInformationService.selectIdByPhone(phone);
-        if (StringUtils.getInstance().isNullOrEmpty(uid)) {
+    private boolean getId(String phone, String password, HttpServletRequest request,Model model) {
+        try {
+            int uid = userInformationService.selectIdByPhone(phone);
+            if (StringUtils.getInstance().isNullOrEmpty(uid)) {
+                return false;
+            }
+            UserInformation userInformation = userInformationService.selectByPrimaryKey(uid);
+            password = StringUtils.getInstance().getMD5(password);
+            String password2 = userPasswordService.selectByUid(userInformation.getId()).getPassword();
+            if (!password.equals(password2)) {
+                String s = "账号或密码错误";
+                request.getSession().setAttribute("login_error", s);
+                return false;
+            }
+            //如果密码账号对应正确，将userInformation存储到session中
+            request.getSession().setAttribute("userInformation", userInformation);
+            request.getSession().setAttribute("uid", uid);
+            SaveSession.getInstance().save(phone,new Date().getTime());
+            return true;
+        } catch (Exception e) {
+            String s = "账号或密码错误";
+            request.getSession().setAttribute("login_error", s);
             return false;
         }
-        UserInformation userInformation = userInformationService.selectByPrimaryKey(uid);
-        password = StringUtils.getInstance().getMD5(password);
-        String password2 = userPasswordService.selectByUid(userInformation.getId()).getPassword();
-        if (!password.equals(password2)) {
-            return false;
-        }
-        //如果密码账号对应正确，将userInformation存储到session中
-        request.getSession().setAttribute("userInformation", userInformation);
-        request.getSession().setAttribute("uid", uid);
-        SaveSession.getInstance().save(phone,new Date().getTime());
-        return true;
     }
 
     //获取最详细的分类，第三层
