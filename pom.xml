@@ -5,7 +5,7 @@
   <artifactId>sk</artifactId>
   <packaging>sk</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>wsk Maven Webapp</name>
+  <name>sss Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
 
@@ -173,7 +173,7 @@
 
   </dependencies>
   <build>
-  <finalName>wsk</finalName>
+  <finalName>sss</finalName>
   <plugins>
     <plugin>
       <groupId>org.apache.maven.plugins</groupId>

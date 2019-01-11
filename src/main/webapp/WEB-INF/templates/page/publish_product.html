@@ -30,9 +30,9 @@
                 </div>
                 <div class="publish_content">
                     <input type="text" class="title_input" name="name" required="required"
-                           th:if="${shopInformation.name}==null"/>
+                           th:if="${shopInformation.name==null}"/>
                     <input type="text" class="title_input" name="name" required="required"
-                           th:if="${shopInformation.name}!=null" th:value="${shopInformation.name}"
+                           th:if="${shopInformation.name!=null}" th:value="${shopInformation.name}"
                     />
                 </div>
             </div>
@@ -114,24 +114,10 @@
                         <option id="type_6">其他</option>
                     </select><span class="to_left">--</span>
                     <select class="choose_second_type">
-                        <option>三成</option>
-                        <option>四成</option>
-                        <option>五成</option>
-                        <option>六成</option>
-                        <option>七成</option>
-                        <option>八成</option>
-                        <option>九成</option>
-                        <option>全新</option>
+
                     </select><span class="to_left">--</span>
                     <select class="choose_third_type" name="sort">
-                        <option>三成</option>
-                        <option>四成</option>
-                        <option>五成</option>
-                        <option>六成</option>
-                        <option>七成</option>
-                        <option>八成</option>
-                        <option>九成</option>
-                        <option>全新</option>
+
                     </select>
                     <br/>
                     <!--<span th:text="${sort}" th:value="${sort}"></span>-->
@@ -144,9 +130,9 @@
                 <div class="img_content">
                     <input class="upload_img_input" type="file" name="image" required="required"/>
                 </div>
-                <img src="" class="show_choose_img" id="show_choose_img"/>
-<!--                <img src="" class="show_choose_img" th:if="${shopInformation.image}!=null"
-                     th:src="${shopInformation.image}"/>-->
+                <img src="" class="show_choose_img" th:if="${shopInformation.image}==null" id="show_choose_img"/>
+                <img src="" class="show_choose_img" th:if="${shopInformation.image}!=null"
+                     th:src="${shopInformation.image}"/>
             </div>
             <div class="submit_content_div">
                 <input type="submit" value="提交" class="submit_input"/>
