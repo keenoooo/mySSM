@@ -86,7 +86,6 @@ $(function () {
                         insertShopCar();
                     }
                 });
-                // alert(wsk);
 
             })
         }

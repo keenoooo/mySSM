@@ -78,6 +78,11 @@ public class StringUtils {
         if (obj == null)
             return true;
 
+        if (obj instanceof String){
+            return (obj.equals("") || obj == null || ((String) obj).length()==0
+                    || obj.equals(" "));
+        }
+
         if (obj instanceof CharSequence)
             return ((CharSequence) obj).length() == 0;
 

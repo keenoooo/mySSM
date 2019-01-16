@@ -21,14 +21,14 @@ public class ChatWebSocketHandler extends TextWebSocketHandler {
     protected void handleTextMessage(WebSocketSession session, TextMessage message) {
 //        System.out.println(session.getId()+":send....");
 //        chatTextMessageHandler(message.getPayload());
-        try {
+            try {
 //            super.handleTextMessage(session, message);
 //            System.out.println(session.getId()+" :"+message.getPayload() + "   " + new Date());
             String m = message.getPayload();
-            String[] wsk = m.split(",");
-            String phone = wsk[0];
-            long time = Long.parseLong(wsk[1]);
-            String action = wsk[2];
+            String[] ss = m.split(",");
+            String phone = ss[0];
+            long time = Long.parseLong(ss[1]);
+            String action = ss[2];
             if (action.equals("start")){
                 session.sendMessage(new TextMessage("success"));
                 SaveSession.getInstance().save(phone,time);

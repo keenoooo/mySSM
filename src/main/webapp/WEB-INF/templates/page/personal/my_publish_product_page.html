@@ -12,7 +12,6 @@
         $(function () {
             $('.update_publish').click(function () {
                 var id = $(this).attr('value');
-//                alert(id);
                 window.location.href = '/modifiedMyPublishProduct?id=' + id;
             });
             $('.delete_publish').click(function () {
@@ -77,10 +76,10 @@
                 <img src="/img/delete_icon.jpg" class="delete_publish" th:value="${o.getId()}"/></div>
         </figure>
     </div>
-    <div class="pagination_div">
+    <div class="pagination_div" onmouseleave="hideParticular()">
         <a class="pagination_lt">&lt;</a>
         <ul>
-            <li><a>1</a></li>
+            <li class="current_page"><a>1</a></li>
             <li><a>2</a></li>
             <li><a>3</a></li>
             <li><a>4</a></li>

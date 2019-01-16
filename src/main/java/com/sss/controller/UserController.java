@@ -763,7 +763,9 @@ public class UserController {
             shopInformation.setLevel(level);
             shopInformation.setName(name);
             shopInformation.setId(id);
-            if(image != null) {
+            String s = image.getOriginalFilename();
+            if(image !=null && !StringUtils.getInstance().isNullOrEmpty(image.getOriginalFilename()) ) {
+
                 String path = "E:\\code\\IdeaProjects\\mySSM\\image", save, random;
                 //String oldImage = path+shopInformationService.selectByPrimaryKey(shopInformation.getId()).getImage();
                 //String oldThumbnails = path+shopInformationService.selectByPrimaryKey(shopInformation.getId()).getThumbnails();
@@ -840,7 +842,6 @@ public class UserController {
         model.addAttribute("shopInformation", shopInformation);
         model.addAttribute("action", 2);
         model.addAttribute("sort", getSort(shopInformation.getSort()));
-        RedirectAttributesModelMap attr = new RedirectAttributesModelMap();
         return "page/publish_product";
     }
 
@@ -938,10 +939,6 @@ public class UserController {
         String stringBuffer;
 //            int i=0;
         for (ShopInformation shopInformation : shopInformations) {
-//                if (i>=5){
-//                    break;
-//                }
-//                i++;
             stringBuffer = getSort(shopInformation.getSort());
             ShopInformationBean shopInformationBean = new ShopInformationBean();
             shopInformationBean.setId(shopInformation.getId());

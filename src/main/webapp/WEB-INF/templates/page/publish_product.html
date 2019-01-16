@@ -106,7 +106,7 @@
                 </div>
                 <div class="publish_content">
                     <select class="choose_first_type">
-                        <option id="type_1" selected="selected">数码科技</option>
+                        <option id="type_1" selected="selected" >数码科技</option>
                         <option id="type_2">影音家电</option>
                         <option id="type_3">鞋服配饰</option>
                         <option id="type_4">运动代步</option>
@@ -128,7 +128,8 @@
                     <h3>图片</h3>
                 </div>
                 <div class="img_content">
-                    <input class="upload_img_input" type="file" name="image" required="required"/>
+                    <input class="upload_img_input" type="file" name="image" th:if="${shopInformation.image}==null" required="required"/>
+                    <input class="upload_img_input" type="file" name="image" th:if="${shopInformation.image}!=null" />
                 </div>
                 <img src="" class="show_choose_img" th:if="${shopInformation.image}==null" id="show_choose_img"/>
                 <img src="" class="show_choose_img" th:if="${shopInformation.image}!=null"
