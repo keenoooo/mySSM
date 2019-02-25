@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>添加收货信息</title>
+    <link rel="stylesheet" href="/css/shopping_cart/modified_address.css"/>
+</head>
+<body>
+    <div class="divadd_address">
+    <form action="/modifiedAddress" enctype="text/plain">
+        <table class="address_table">
+            <tr>
+                <td colspan="2" class="table_title"><h2>新增收货地址</h2></td>
+            </tr>
+            <tr>
+                <td>收货人：</td>
+                <td><input type="text" class="user_reciver" name="reciver" required="required"/></td>
+            </tr>
+            <tr>
+                <td>手机号：</td>
+                <td><input type="text" class="user_phone" name="phone" required="required"/></td>
+            </tr>
+                <p class="tip_msg" style="display: none;"></p>
+            <tr>
+                <td>地&nbsp;&nbsp;&nbsp;址：</td>
+                <td><input type="text" class="user_address" name="address" required="required" placeholder="格式:楼号#宿舍号"/></td>
+            </tr>
+            <tr>
+                <td class="subtd"><input type="submit" value="保存" name="table_submit" class="submit_button"/></td>
+                <td class="closetd"><input type="button" value="关闭" name="table_close" onclick="window.close()" class="close_button"/></td>
+            </tr>
+        </table>
+    </form>
+    </div>
+</body>
+</html>

@@ -1,15 +1,12 @@
 package com.sss.controller;
 
+import com.sss.bean.UserAddressBean;
 import com.sss.bean.GoodsCarBean;
 import com.sss.bean.ShopInformationBean;
 import com.sss.bean.UserWantBean;
 import com.sss.pojo.*;
 import com.sss.service.*;
-import com.sss.pojo.*;
-import com.sss.service.*;
 import com.sss.token.TokenProccessor;
-import com.sss.tool.OCR;
-import com.sss.tool.Pornographic;
 import com.sss.tool.SaveSession;
 import com.sss.tool.StringUtils;
 import org.springframework.stereotype.Controller;
@@ -19,19 +16,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.*;
 
 /**
- * Created by wsk1103 on 2017/5/9.
+ * Created by sss on 2017/5/9.
  */
 @Controller
 public class UserController {
@@ -68,6 +62,8 @@ public class UserController {
     private AllKindsService allKindsService;
     @Resource
     private ShopContextService shopContextService;
+    @Resource
+    private UserAddressService userAddressService;
 
     //进入登录界面
     @RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -80,12 +76,13 @@ public class UserController {
 
     //退出
     @RequestMapping(value = "/logout")
-    public String logout(HttpServletRequest request) {
+    public String logout(HttpServletRequest request,Model model) {
         try {
 
             request.getSession().removeAttribute("userInformation");
             request.getSession().removeAttribute("uid");
             request.getSession().removeAttribute("login_error");
+            request.getSession().removeAttribute("userAddress");
             System.out.println("logout");
         } catch (Exception e) {
             e.printStackTrace();
@@ -143,6 +140,8 @@ public class UserController {
         boolean b = false;
 
         b = getId(phone, password, request,model);
+        //添加用户收货信息
+        request.getSession().setAttribute("userPhone",phone);
         //失败，不存在该手机号码
         if (!b) {
             return "redirect:/login";
@@ -177,7 +176,17 @@ public class UserController {
                              @RequestParam(required = false) String dormitory,
                              @RequestParam(required = false) String gender) {
         UserInformation userInformation = (UserInformation) request.getSession().getAttribute("userInformation");
+        String phone = (String)request.getSession().getAttribute("userPhone");
         Map<String, Integer> map = new HashMap<>();
+        UserAddressBean userAddress = (UserAddressBean)request.getSession().getAttribute("userAddress");
+        if(userAddress==null){
+             userAddress = new UserAddressBean();
+        }
+        if(!StringUtils.getInstance().isNullOrEmpty(phone)){
+            userAddress.setPhone(phone);
+        }/*else{
+            userAddress.setPhone(userInformation.getPhone());
+        }*/
         map.put("result", 0);
         //该用户还没有登录
         if (StringUtils.getInstance().isNullOrEmpty(userInformation)) {
@@ -200,6 +209,7 @@ public class UserController {
         if (realName != null && realName.length() < 25) {
             realName = StringUtils.getInstance().replaceBlank(realName);
             userInformation.setRealname(realName);
+            userAddress.setReciver(realName);
         } else if (realName != null && realName.length() >= 25) {
             return map;
         }
@@ -218,6 +228,7 @@ public class UserController {
         if (dormitory != null && dormitory.length() < 25) {
             dormitory = StringUtils.getInstance().replaceBlank(dormitory);
             userInformation.setDormitory(dormitory);
+            userAddress.setAddress(dormitory);
         } else if (dormitory != null && dormitory.length() >= 25) {
             return map;
         }
@@ -239,6 +250,7 @@ public class UserController {
         }
         //认证成功
         request.getSession().setAttribute("userInformation", userInformation);
+        request.getSession().setAttribute("userAddress",userAddress);
         map.put("result", 1);
         return map;
     }
@@ -498,6 +510,8 @@ public class UserController {
     @RequestMapping(value = "/shopping_cart")
     public String selectShopCar(HttpServletRequest request,Model model) {
         UserInformation userInformation = (UserInformation) request.getSession().getAttribute("userInformation");
+        UserAddressBean address = (UserAddressBean)request.getSession().getAttribute("userAddress");
+
         if (StringUtils.getInstance().isNullOrEmpty(userInformation)) {
             userInformation = new UserInformation();
             model.addAttribute("userInformation", userInformation);
@@ -505,6 +519,14 @@ public class UserController {
             return "redirect:login";
         } else {
             model.addAttribute("userInformation", userInformation);
+            if(StringUtils.getInstance().isNullOrEmpty(address)
+                    &&StringUtils.getInstance().isNullOrEmpty(userInformation.getDormitory())){
+                address = new UserAddressBean();
+                address.setPhone(userInformation.getPhone());
+                address.setAddress(userInformation.getDormitory());
+                address.setReciver(userInformation.getRealname());
+            }
+            model.addAttribute("userAddress",address);
         }
         int uid = userInformation.getId();
         List<GoodsCar> goodsCars = goodsCarService.selectByUid(uid);
@@ -957,8 +979,51 @@ public class UserController {
         return "page/personal/my_publish_product_page";
     }
 
-    //更新商品信息
 
+    //修改、删除收货地址
+    //修改action=1 删除action=2
+    @RequestMapping(value = "/modifiedAddress" /*,method = RequestMethod.POST*/)
+    public String modifiedUserAddress(HttpServletRequest request,Model model,
+                                      @RequestParam String reciver,
+                                      @RequestParam String phone,@RequestParam String address/*,
+                                      @RequestParam String action*/){
+        int action = 1;
+
+        UserInformation userInformation = (UserInformation) request.getSession().getAttribute("userInfomation");
+        HttpSession session = request.getSession();
+        int result = 0;
+        if(1 == action){
+            UserAddressBean userAddressBean = new UserAddressBean();
+            if(!StringUtils.getInstance().isNullOrEmpty(reciver) && !StringUtils.getInstance().isNullOrEmpty(phone)
+                    && !StringUtils.getInstance().isNullOrEmpty(address)){
+                userAddressBean.setReciver(reciver);
+                userAddressBean.setPhone(phone);
+                userAddressBean.setAddress(address);
+                userAddressBean.setUid(1);
+            }
+            try{
+                if(userAddressBean !=null) {
+                    userAddressService.insertSelective(userAddressBean);
+                    session.setAttribute("userAddress", userAddressBean);
+                    result = 1;
+                }
+                }catch (Exception e){
+                    result = -1;
+                    System.out.println(e.getMessage());
+                }
+
+        }else if("2".equals(action)){
+            UserAddressBean userAddress = (UserAddressBean)session.getAttribute("userAddress");
+
+        }
+        return "redirect:login";
+    }
+
+    //添加收货地址
+    @RequestMapping("/open_modified_address")
+    public String openModifiedAddress(HttpServletRequest req){
+        return "page/modified_address";
+    }
 
     private String getSort(int sort) {
         StringBuilder sb = new StringBuilder();
@@ -1176,63 +1241,4 @@ public class UserController {
         userReleaseService.insertSelective(userRelease);
     }
 
-    //循环插入商品
-    //发布商品
-    @RequestMapping(value = "/test")
-    public String insertGoods() {
-
-            //begin insert the shopInformation to the MySQL
-//            ShopInformation shopInformation = new ShopInformation();
-//            shopInformation.setName(name);
-//            shopInformation.setLevel(level);
-//            shopInformation.setRemark(remark);
-//            shopInformation.setPrice(new BigDecimal(price));
-//            shopInformation.setSort(sort);
-//            shopInformation.setQuantity(quantity);
-//            shopInformation.setModified(new Date());
-//            shopInformation.setImage(image);//This is the other uniquely identifies
-//            shopInformation.setUid(uid);
-//            //将发布的商品的编号插入到用户的发布中
-//            UserRelease userRelease = new UserRelease();
-//            userRelease.setModified(new Date());
-//            userRelease.setSid(sid);
-//            userRelease.setUid(uid);
-//            shopInformation.setId(sid);
-        Random random = new Random();
-        ShopInformation shopInformation;
-        UserRelease userRelease;
-        int level,uid,quantity;
-        double price;
-        for (int i = 1,k=1,j=189;i<1000;i++,j++,k++) {
-            if (k>94){
-                k=1;
-            }
-            level = random.nextInt(10)+1;
-            price = Math.random()*1000+1;
-            quantity = random.nextInt(10)+1;
-            uid = random.nextInt(100)+1;
-            shopInformation = new ShopInformation();
-            shopInformation.setId(j);
-            shopInformation.setName("百年孤独");
-            shopInformation.setModified(new Date());
-            shopInformation.setLevel(level);
-            shopInformation.setRemark("看上的请联系我，QQ：1261709167，微信：1261709167");
-//            double price = Math.random()*1000.00+1;
-            shopInformation.setPrice(new BigDecimal(price));
-            shopInformation.setSort(k);
-            shopInformation.setQuantity(quantity);
-            shopInformation.setImage("/image/QyBHYiMfYQ4XZFCqxEv0.jpg");
-//            int uid = random.nextInt(100)+1;
-            shopInformation.setUid(uid);
-//            userRelease = new UserRelease();
-//            userRelease.setUid(uid);
-//            userRelease.setSid(j);
-//            userRelease.setModified(new Date());
-//            userRelease.setDisplay(1);
-            shopInformationService.updateByPrimaryKeySelective(shopInformation);
-//            userReleaseService.insertSelective(userRelease);
-        }
-        System.out.println("success");
-        return "page/publish_product";
-    }
 }

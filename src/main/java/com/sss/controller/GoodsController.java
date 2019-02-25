@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by wsk1103 on 2017/5/14.
+ * Created by sss on 2017/5/14.
  */
 @Controller
 public class GoodsController {

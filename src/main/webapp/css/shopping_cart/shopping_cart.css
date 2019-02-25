@@ -40,15 +40,27 @@ span.name_info {
     color: rgba(0, 0, 0, 0.67);
 }
 
-img.pencil_icon {
+img.update_address {
     float: left;
     width: 1em;
-    margin-left: 65%;
+    margin-left: 90%;
+}
+img.insert_address {
+    /*float: left;*/
+    /*text-align: center;*/
+    width: 1em;
+    margin-left: 45%;
+}
+img.delete_address {
+    width: 1em;
+    margin-left: 90%;
 }
 
-img.delete_icon {
-    width: 1em;
-    margin-left: 60%;
+span.icon_front{
+    /*float:left;*/
+    /*text-align:center;*/
+    color: #666666;
+    margin-left: 32%;
 }
 
 span.address_info {

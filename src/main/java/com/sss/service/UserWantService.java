@@ -5,7 +5,7 @@ import com.sss.pojo.UserWant;
 import java.util.List;
 
 /**
- * Created by wsk1103 on 2017/5/13.
+ * Created by sss on 2017/5/13.
  */
 public interface UserWantService {
     int deleteByPrimaryKey(Integer id);

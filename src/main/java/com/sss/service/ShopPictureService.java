@@ -5,7 +5,7 @@ import com.sss.pojo.ShopPicture;
 import java.util.List;
 
 /**
- * Created by wsk1103 on 2017/5/12.
+ * Created by sss on 2017/5/12.
  */
 public interface ShopPictureService {
     int deleteByPrimaryKey(Integer id);

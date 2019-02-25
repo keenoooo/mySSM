@@ -102,4 +102,8 @@ $(function () {
             })
         }
     })
+
+    $('.insert_address').click(function () {
+        window.open("/open_modified_address","",'width=280px,height=200px,menubar=no,toolbar=no,top=200px,left=600px');
+    })
 });

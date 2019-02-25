@@ -340,7 +340,7 @@ INSERT INTO `shopinformation` VALUES ('87', '2017-05-14 20:04:41', '华为P10', 
 INSERT INTO `shopinformation` VALUES ('88', '2017-05-14 20:07:48', '苹果6SPLUS', '8', '来自wsk的爱,QQ1243660956，机械，这个容易受欧尚的？', '525.50', '1', '1', '4', '1', '0', '4', '\\image/apple6s.jpg', '/images/thumbnails/IrFMeAQeua1496368854318.jpg');
 INSERT INTO `shopinformation` VALUES ('89', '2017-05-14 20:14:10', '小米5', '8', '来自wsk的爱,QQ1243660956，机械，这个容易受欧尚的？', '525.50', '1', '1', '4', '1', '0', '4', 'image/xiaomi5.jpg', '/images/thumbnails/IrFMeAQeua1496368854318.jpg');
 INSERT INTO `shopinformation` VALUES ('90', '2017-05-14 20:15:29', '苹果6S', '8', '来自wsk的爱,QQ1243660956，机械，这个容易受欧尚的？', '5525.50', '1', '1', '4', '1', '0', '4', 'image/apple6s.jpg', '/images/thumbnails/IrFMeAQeua1496368854318.jpg');
-INSERT INTO `shopinformation` VALUES ('91', '2017-05-20 15:53:11', '月球下的人', '7', 'wsk1103', '34.00', '73', '1', '1', '1', '0', '7', 'image/yourname.jpg', '/images/thumbnails/IrFMeAQeua1496368854318.jpg');
+INSERT INTO `shopinformation` VALUES ('91', '2017-05-20 15:53:11', '月球下的人', '7', 'sss', '34.00', '73', '1', '1', '1', '0', '7', 'image/yourname.jpg', '/images/thumbnails/IrFMeAQeua1496368854318.jpg');
 INSERT INTO `shopinformation` VALUES ('92', '2017-05-20 19:06:57', '傲慢与偏见', '9', '来自wsk的爱', '24.00', '73', '1', '1', '1', '0', '7', 'image\\PorRmD0JDZ1495278394532.jpg', '/images/thumbnails/IrFMeAQeua1496368854318.jpg');
 INSERT INTO `shopinformation` VALUES ('93', '2017-05-25 16:05:48', '百年孤独', '3', '看上的请联系我，QQ：1261709167，微信：1261709167', '203.45', '1', '1', '9', '1', '0', '19', '/image/QyBHYiMfYQ4XZFCqxEv0.jpg', '/images/thumbnails/IrFMeAQeua1496368854318.jpg');
 INSERT INTO `shopinformation` VALUES ('94', '2017-05-25 16:06:27', '百年孤独', '9', '看上的请联系我，QQ：1261709167，微信：1261709167', '124.70', '1', '1', '8', '1', '0', '87', '/image/QyBHYiMfYQ4XZFCqxEv0.jpg', '/images/thumbnails/IrFMeAQeua1496368854318.jpg');
@@ -1610,8 +1610,8 @@ INSERT INTO `userinformation` VALUES ('3', '2017-05-14 14:55:28', '111', '122', 
 INSERT INTO `userinformation` VALUES ('4', '2017-05-14 15:00:11', '爱我的人1', '124', null, null, null, null, null, '2017-05-14 15:00:11', null);
 INSERT INTO `userinformation` VALUES ('5', '2017-05-14 15:00:45', '爱我的人2', '125', null, null, null, null, null, '2017-05-14 15:00:45', null);
 INSERT INTO `userinformation` VALUES ('6', '2017-05-14 15:01:13', '爱我的人3', '126', null, null, null, null, null, '2017-05-14 15:01:13', null);
-INSERT INTO `userinformation` VALUES ('7', '2017-05-19 14:43:01', 'wsk1103', '127', '吴树楷', '信计142', '3', '9407', '男', '2017-05-20 15:14:14', '');
-INSERT INTO `userinformation` VALUES ('8', '2017-05-20 22:31:08', 'wsk1103', '128', null, null, null, null, null, '2017-05-20 22:31:03', null);
+INSERT INTO `userinformation` VALUES ('7', '2017-05-19 14:43:01', 'sss', '127', '吴树楷', '信计142', '3', '9407', '男', '2017-05-20 15:14:14', '');
+INSERT INTO `userinformation` VALUES ('8', '2017-05-20 22:31:08', 'sss', '128', null, null, null, null, null, '2017-05-20 22:31:03', null);
 INSERT INTO `userinformation` VALUES ('9', '2018-09-09 15:34:18', 'test', '129', null, null, null, null, null, '2018-09-09 15:34:17', null);
 
 -- ----------------------------

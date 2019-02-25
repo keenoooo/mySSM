@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by wsk1103 on 2017/5/9.
+ * Created by sss on 2017/5/9.
  */
 @Controller
 public class RegisterController {
@@ -29,8 +29,7 @@ public class RegisterController {
 
     @Resource
     private UserInformationService userInformationService;
-    //SLF4j打印日志
-    private Logger log = LoggerFactory.getLogger(this.getClass());
+
     @RequestMapping("/insertUser")
     @ResponseBody
     public Map insertUser(HttpServletRequest request, Model model,
@@ -55,7 +54,6 @@ public class RegisterController {
                 return map;
             }
         } catch (Exception e) {
-           log.error("查询手机号是否存在时发生错误！");
             map.put("result",0);
             return map;
         }

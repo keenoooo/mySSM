@@ -1,6 +1,7 @@
 package com.sss.controller;
 
-import com.sss.controller.UserController;
+import com.sss.bean.UserAddressBean;
+import com.sss.service.Impl.UserAddressServiceimpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
- * Created by wsk1103 on 2017/5/24.
+ * Created by sss on 2017/5/24.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
@@ -52,7 +53,7 @@ public class UserControllerTest {
         Random random = new Random();
         int level,uid,quantity;
         double price;
-        for (int i = 1,j=93;i<1000;i++,j++) {
+        for (int i = 1,j=93;i<2;i++,j++) {
             level = random.nextInt(10)+1;
             price = Math.random()*1000+1;
             quantity = random.nextInt(10)+1;
@@ -61,7 +62,7 @@ public class UserControllerTest {
                     .param("name","百年孤独")
                     .param("level",""+level)
                     .param("sid",""+j)
-                    .param("remark","看上的请联系我，QQ：1261709167，微信：1261709167")
+                    .param("remark"," ")
                     .param("price",""+price)
                     .param("sort",""+i)
                     .param("quantity",""+quantity)
@@ -72,6 +73,16 @@ public class UserControllerTest {
                     .andExpect(status().isOk());
         }
         System.out.println("success");
+    }
+
+    @Test
+    public void insertAddress(){
+        UserAddressServiceimpl sv = new UserAddressServiceimpl();
+        UserAddressBean userAddressBean = new UserAddressBean();
+        userAddressBean.setReciver("t");
+        userAddressBean.setAddress("t");
+        userAddressBean.setPhone("18754126324");
+        System.out.println(sv.insert(userAddressBean));
     }
 
 }
