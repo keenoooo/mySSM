@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * Created by sss on 2017/10/18.
+ * Created by sss on 2019/10/18.
  */
 public class OnlyOneUserSingle<K,V> {
     private volatile Map<K,V> map = new ConcurrentHashMap<>();

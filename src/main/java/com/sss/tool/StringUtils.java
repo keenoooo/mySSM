@@ -12,9 +12,24 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by sss on 2017/5/14.
+ * Created by sss on 2019/5/14.
  */
 public class StringUtils {
+
+    public static boolean isBlank(String value) {
+        int strLen ;
+        if ((value == null) || ((strLen = value.length()) == 0))
+            return true;
+
+        for (int i = 0; i < strLen; i++) {
+            if (!Character.isWhitespace(value.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+
+
+    }
 
     private static class LayHolder {
         private static final StringUtils instance = new StringUtils();

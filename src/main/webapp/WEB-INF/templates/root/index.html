@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Easyui</title>
+	<link rel="stylesheet" type="text/css" href="/js/easyui/themes/default/easyui.css"/>
+	<link rel="stylesheet" type="text/css" href="/js/easyui/themes/icon.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/root/common.css"/>
+	<script type="text/javascript" src="/js/easyui/jquery.min.js">
+	</script>
+	<script type="text/javascript" src="/js/easyui/jquery.easyui.min.js">
+	</script>
+ 	<!--
+	<style type="text/css">
+		#header{
+			background-image:url(img/background.png);
+			background-size: 100% ;
+		}
+	</style>
+	-->
+</head>
+	<!-- <div style="margin:20px 0;"></div> -->
+<body id="layout" style="visibility:hidden;">
+	<div class="easyui-layout" fit="true" >
+
+		<div id='header' data-options="region:'north'" >
+			<img src="/img/root/logo.png" class="logo" />
+			<div class="top-btns">
+				<span>欢迎您，管理员</span>
+				<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-lock'">修改密码</a>
+				<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-clear'">退出系统</a>
+			</div>
+		</div>
+
+		<div id="leftMenu" data-options="region:'west',split:true" title="导航菜单" >
+				<div id="menu" class="easyui-accordion" data-options="fit:true,border:false">
+						<div title="用户管理" data-options="selected:true,iconCls:'icon-man'" style="padding:10px;">
+								<ul class="menu">
+										<li class="active"><a href="#">首页</a></li>	
+										<li><a href="#" data-url="rootmoduser">添加、修改用户</a></li>
+								</ul>
+						</div>
+						<div title="商品管理"  style="padding:10px;" data-options="iconCls:'icon-reload'">
+							
+						</div>
+						<div title="订单管理" style="padding:10px" data-options="iconCls:'icon-print'">
+							
+						</div>
+					</div>
+		</div>
+		
+		<div region="center" id="content">
+				<div id="tt" class="easyui-tabs" fit="true">
+						<div title="首页" style="padding:20px;display:none" iconCls="icon-filter">
+							<h2>主页面</h2>
+							<p>Right click on page to display menu.</p>
+							<div class="easyui-calendar" style="width:30%;height:40%;"></div>
+						</div>
+				</div>
+		</div>
+
+		<div id="footer" data-options="region:'south',split:true" style="height:30px;">后台管理系统 V1.0</div>
+		<script type="text/javascript">
+			$(function() {
+				//添加新的Tab页
+				$("#menu").on("click", "a[data-url]", function(e) {
+					e.preventDefault();
+					var tabTitle = $(this).text();
+					var tabUrl = $(this).data("url");
+					
+					if($("#tt").tabs("exists", tabTitle)) { //判断该Tab页是否已经存在
+						$("#tt").tabs("select", tabTitle);
+					}else {
+						$("#tt").tabs("add", {
+							title: tabTitle,
+							href: tabUrl,
+							closable: true
+						});
+					}
+					$("#menu .active").removeClass("active");
+					$(this).parent().addClass("active");
+				});
+				
+				//解决闪屏的问题
+				window.setTimeout(function() {
+					$("#layout").css("visibility", "visible");
+				}, 0);
+			});
+		</script>
+	</div>
+</body>
+</html>

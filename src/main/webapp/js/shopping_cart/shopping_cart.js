@@ -1,5 +1,5 @@
 /**
- * Created by alone on 2017/5/18.
+ * Created by alone on 2019/5/18.
  */
 $(function () {
 //            按照下面这个方式添加新的元素，如果想在开头位置添加，就用first  before
@@ -104,6 +104,19 @@ $(function () {
     })
 
     $('.insert_address').click(function () {
-        window.open("/open_modified_address","",'width=280px,height=200px,menubar=no,toolbar=no,top=200px,left=600px');
+        var uid = $(this).attr('value');
+        window.open("/open_modified_address?uid="+uid,"",'width=280px,height=200px,menubar=no,toolbar=no,top=200px,left=600px');
     })
+
+    // $('.subtd').click(function () {
+    //     var uid = '';
+    //     $.ajax({
+    //         url:'/',
+    //         dateType:'JSON',
+    //         type:'POST',
+    //         data:{uid:uid}
+    //     })
+    // })
+
+
 });

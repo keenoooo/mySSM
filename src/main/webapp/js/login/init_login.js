@@ -1,5 +1,5 @@
 /**
- * Created by alone on 2017/5/9.
+ * Created by alone on 2019/5/9.
  */
 $(function () {
     //1 注册，2忘记密码

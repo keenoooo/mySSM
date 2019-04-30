@@ -1,5 +1,5 @@
 /**
- * Created by Maibenben on 2017/5/21.
+ * Created by Maibenben on 2019/5/21.
  */
 $(function () {
     $('.send_comment_button').click(function () {

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * Created by sss on 2017/5/22.
+ * Created by sss on 2019/5/22.
  */
 public class GoodsCarBean implements Serializable{
     private int id;

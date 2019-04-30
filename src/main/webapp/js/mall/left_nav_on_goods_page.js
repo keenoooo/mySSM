@@ -1,5 +1,5 @@
 /**
- * Created by alone on 2017/5/14.
+ * Created by alone on 2019/5/14.
  */
 $(function () {
     insertShopCar();
@@ -46,13 +46,13 @@ $(function () {
             $('.particular_type_div').html(my_string);
             //  点击事件
             $('.type_goods_list a.shop_sort').click(function () {
-                var wsk = $(this).attr('id');
+                var id = $(this).attr('id');
                 var $all_product = $('.all_product');
                 $.ajax({
                     url: 'selectBySort',
                     type: 'post',
                     dataType: 'JSON',
-                    data: {sort: wsk},
+                    data: {sort: id},
                     success: function (data) {
                         $all_product.html('');
                         if (data.length === 0) {

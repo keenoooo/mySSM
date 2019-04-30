@@ -3,7 +3,7 @@ package com.sss.service;
 import com.sss.pojo.UserPassword;
 
 /**
- * Created by Maibenben on 2017/4/27.
+ * Created by Maibenben on 2019/4/27.
  */
 public interface UserPasswordService {
     int deleteByPrimaryKey(Integer id);

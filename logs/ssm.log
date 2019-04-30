@@ -1,0 +1,46 @@
+配置文件名: zfbinfo.properties
+Configs{支付宝openapi网关: https://openapi.alipaydev.com/gateway.do
+, 支付宝mcloudapi网关域名: http://mcloudmonitor.com/gateway.do
+, pid: 2088102177520520
+, appid: 2016092700608995
+, 商户RSA私钥: MIIEvQ******+omIM=
+, 商户RSA公钥: MIIBIj******IDAQAB
+, 支付宝RSA公钥: MIIBIj******IDAQAB
+, 签名类型: RSA2
+, 查询重试次数: 5
+, 查询间隔(毫秒): 5000
+, 撤销尝试次数: 3
+, 撤销重试间隔(毫秒): 2000
+, 交易保障调度延迟(秒): 5
+, 交易保障调度间隔(秒): 900
+}
+trade.precreate bizContent:{"out_trade_no":"tradeprecreate15554847982007498659","seller_id":"","total_amount":"0.01","undiscountable_amount":"0","subject":"xxx品牌xxx门店当面付扫码消费","body":"购买商品3件共20.00元","goods_detail":[{"goods_id":"goods_id001","goods_name":"xxx小面包","quantity":1,"price":"10"},{"goods_id":"goods_id002","goods_name":"xxx牙刷","quantity":2,"price":"5"}],"operator_id":"test_operator_id","store_id":"test_store_id","extend_params":{"sys_service_provider_id":"2088100200300400500"},"timeout_express":"120m"}
+Summary^_^10000^_^null^_^ProtocalMustParams:charset=utf-8&method=alipay.trade.precreate&sign=o1KXyurAVV73y2MnVkIz+qHRI0i4KC7xkE/rxcB00OWnVr3epMWc0e1yMAZB+z1/wZZRbCG0XlB2Yl9bSABcwGM9yK94tsorkDMa1GsHOghL3MdpMQc7jdU/ef0dUQg1T1NjzQnJc40gMszn7TdBBO7N6UzRGoeerQXMFs4jB4pcFeY5RNSwxub0fnN+hHb7ffNPgMcx67qwl7vefgaZCtzoT+eb10RP3jo8VEeN4LfyAJh6BPHUjQ/aBHzKk74mHKVVRJI+Yrks6Ql4vTPj5UhH4iy1da6VnNKisjbDQSudK1SUGJNs3TstRcDKdBZoDcZHVRv7F73Y70oK/Bv34Q==&version=1.0&app_id=2016092700608995&sign_type=RSA2&timestamp=2019-04-17 15:06:38^_^ProtocalOptParams:alipay_sdk=alipay-sdk-java-3.3.0&format=json^_^ApplicationParams:biz_content={"out_trade_no":"tradeprecreate15554847982007498659","seller_id":"","total_amount":"0.01","undiscountable_amount":"0","subject":"xxx品牌xxx门店当面付扫码消费","body":"购买商品3件共20.00元","goods_detail":[{"goods_id":"goods_id001","goods_name":"xxx小面包","quantity":1,"price":"10"},{"goods_id":"goods_id002","goods_name":"xxx牙刷","quantity":2,"price":"5"}],"operator_id":"test_operator_id","store_id":"test_store_id","extend_params":{"sys_service_provider_id":"2088100200300400500"},"timeout_express":"120m"}^_^559ms,854ms,11ms
+{"alipay_trade_precreate_response":{"code":"10000","msg":"Success","out_trade_no":"tradeprecreate15554847982007498659","qr_code":"https:\/\/qr.alipay.com\/bax07302pfsyvanqvsc500eb"},"sign":"UV6+loqUYH2Zqr2YQsW/icWiBTGn9z3c69Pojsay8sdkAJAtdSz548UbJNyWyECBHq6zcfPP4jwvrM9eBDgyLr/zDQkMyt/R7dp15lwKphgp3h41hL9LpMoF5oceIGo2bc2vW5zzUWYDTYx70S+cb4Z89KyDLx36ZmUqyNafwSXrq2/+W37Lvh0vxyYtuPEpD1ifuYy7bQKaDhc0fCVTCByo78d0hkwc691CI/b7Q/Q5zkgngmkeMdjipxWdeKIGeDxku7mALly5T33OdOF43/YgPm0J5ydmr5JHdpkEoRppnwvHclWWmdruCNYhtrKOD6vpadIDP//pNtQGcoe6EQ=="}
+支付宝预下单成功: )
+code:10000, msg:Success
+body:{"alipay_trade_precreate_response":{"code":"10000","msg":"Success","out_trade_no":"tradeprecreate15554847982007498659","qr_code":"https:\/\/qr.alipay.com\/bax07302pfsyvanqvsc500eb"},"sign":"UV6+loqUYH2Zqr2YQsW/icWiBTGn9z3c69Pojsay8sdkAJAtdSz548UbJNyWyECBHq6zcfPP4jwvrM9eBDgyLr/zDQkMyt/R7dp15lwKphgp3h41hL9LpMoF5oceIGo2bc2vW5zzUWYDTYx70S+cb4Z89KyDLx36ZmUqyNafwSXrq2/+W37Lvh0vxyYtuPEpD1ifuYy7bQKaDhc0fCVTCByo78d0hkwc691CI/b7Q/Q5zkgngmkeMdjipxWdeKIGeDxku7mALly5T33OdOF43/YgPm0J5ydmr5JHdpkEoRppnwvHclWWmdruCNYhtrKOD6vpadIDP//pNtQGcoe6EQ=="}
+filePath:/Users/sudo/Desktop/qr-tradeprecreate15554847982007498659.png
+配置文件名: zfbinfo.properties
+Configs{支付宝openapi网关: https://openapi.alipaydev.com/gateway.do
+, 支付宝mcloudapi网关域名: http://mcloudmonitor.com/gateway.do
+, pid: 2088102177520520
+, appid: 2016092700608995
+, 商户RSA私钥: MIIEvQ******+omIM=
+, 商户RSA公钥: MIIBIj******IDAQAB
+, 支付宝RSA公钥: MIIBIj******IDAQAB
+, 签名类型: RSA2
+, 查询重试次数: 5
+, 查询间隔(毫秒): 5000
+, 撤销尝试次数: 3
+, 撤销重试间隔(毫秒): 2000
+, 交易保障调度延迟(秒): 5
+, 交易保障调度间隔(秒): 900
+}
+trade.precreate bizContent:{"out_trade_no":"tradeprecreate15555100127279084734","seller_id":"","total_amount":"0.01","undiscountable_amount":"0","subject":"xxx品牌xxx门店当面付扫码消费","body":"购买商品3件共20.00元","goods_detail":[{"goods_id":"goods_id001","goods_name":"xxx小面包","quantity":1,"price":"10"},{"goods_id":"goods_id002","goods_name":"xxx牙刷","quantity":2,"price":"5"}],"operator_id":"test_operator_id","store_id":"test_store_id","extend_params":{"sys_service_provider_id":"2088100200300400500"},"timeout_express":"120m"}
+Summary^_^10000^_^null^_^ProtocalMustParams:charset=utf-8&method=alipay.trade.precreate&sign=D+CmQzyQfts5czDvBNsWxIyQa6BrClKm8ObZtxNanMh2FrLviZktBxZptUY9bLMT2AhKEsg2kKbJTWFhsQVBhl7O4uzPyfH+xE7Yj9nSIGNEsjeQggrWzAsL4sSK9TUbogeLLJnKLTW7NGO0Aj76V8SwmfzzPr5iRv8LJlmL0Q/Y49uuHBBTL580MZo/3opRLM3D3+94WzgpOl0hr1WzYRRYujXuGN134cbJb9xN8O4hU0qj/ulVdk9C8Z4C6Zt9HqFwOVTT9CN9g4KchLsl3ycxe+O9A87yJiH1LTn2zeTrMqBp/Z92H7ErUaFhUs3va1Js95TXZgPdCX/1AcYBkw==&version=1.0&app_id=2016092700608995&sign_type=RSA2&timestamp=2019-04-17 22:06:52^_^ProtocalOptParams:alipay_sdk=alipay-sdk-java-3.3.0&format=json^_^ApplicationParams:biz_content={"out_trade_no":"tradeprecreate15555100127279084734","seller_id":"","total_amount":"0.01","undiscountable_amount":"0","subject":"xxx品牌xxx门店当面付扫码消费","body":"购买商品3件共20.00元","goods_detail":[{"goods_id":"goods_id001","goods_name":"xxx小面包","quantity":1,"price":"10"},{"goods_id":"goods_id002","goods_name":"xxx牙刷","quantity":2,"price":"5"}],"operator_id":"test_operator_id","store_id":"test_store_id","extend_params":{"sys_service_provider_id":"2088100200300400500"},"timeout_express":"120m"}^_^763ms,898ms,15ms
+{"alipay_trade_precreate_response":{"code":"10000","msg":"Success","out_trade_no":"tradeprecreate15555100127279084734","qr_code":"https:\/\/qr.alipay.com\/bax07053txxxchndv1vp0012"},"sign":"jhGxYi+iXOlvl9Cm04Ac4HuuzGd/rR9kpMslikB++7Ejm3wDpeNZoJ9hWk8KUje46wFcPzrwL4Xs0f8PyGc6JGy1e/E6+w464ZaVWW7itP3GEf4W7QQyvNVlx4O4qUr1j2I+0/swgLibB4cuMwtRVHq17gxU4DZUvNHQ1DboK8y+oAsKKd2vHoLHI+yiGWn/0C7B+T1aWHM0gsfWta5SCnwCFSN6GothLKH7zCBRequvUM4ixzn6vMIYrSpDxUtrXk6yQw3VHAIXW8cqjenUM9K8gu7RxfAVWsHTT9ruTKhLnX7upJ3fnc6/aESR+43pIYxIq0otojpbZ1CRRsUjww=="}
+支付宝预下单成功: )
+code:10000, msg:Success
+body:{"alipay_trade_precreate_response":{"code":"10000","msg":"Success","out_trade_no":"tradeprecreate15555100127279084734","qr_code":"https:\/\/qr.alipay.com\/bax07053txxxchndv1vp0012"},"sign":"jhGxYi+iXOlvl9Cm04Ac4HuuzGd/rR9kpMslikB++7Ejm3wDpeNZoJ9hWk8KUje46wFcPzrwL4Xs0f8PyGc6JGy1e/E6+w464ZaVWW7itP3GEf4W7QQyvNVlx4O4qUr1j2I+0/swgLibB4cuMwtRVHq17gxU4DZUvNHQ1DboK8y+oAsKKd2vHoLHI+yiGWn/0C7B+T1aWHM0gsfWta5SCnwCFSN6GothLKH7zCBRequvUM4ixzn6vMIYrSpDxUtrXk6yQw3VHAIXW8cqjenUM9K8gu7RxfAVWsHTT9ruTKhLnX7upJ3fnc6/aESR+43pIYxIq0otojpbZ1CRRsUjww=="}
+filePath:/Users/sudo/Desktop/qr-tradeprecreate15555100127279084734.png

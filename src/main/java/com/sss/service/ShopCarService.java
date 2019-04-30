@@ -3,7 +3,7 @@ package com.sss.service;
 import com.sss.pojo.ShopCar;
 
 /**
- * Created by sss on 2017/5/13.
+ * Created by sss on 2019/5/13.
  */
 public interface ShopCarService {
     int deleteByPrimaryKey(Integer id);

@@ -10,7 +10,7 @@ import java.net.URLEncoder;
 import java.util.Map;
 
 /**
- * Created by Maibenben on 2017/1/2.
+ * Created by Maibenben on 2019/1/2.
  */
 public class HttpUtils {
     /*

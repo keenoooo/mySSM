@@ -1,0 +1,40 @@
+.address_table{
+    margin:0 auto;
+}
+
+.subtd{
+    position: relative;
+    left: 40px;
+}
+
+.closetd{
+    position: relative;
+    left: 60px;
+}
+
+.submit_button{
+    width: 2cm;
+    background-color: slateblue;
+    height: 20px;
+    border: none;
+    font-size: 0.7em;
+    color: white;
+    border-radius: 5px;
+}
+
+.close_button{
+    width: 2cm;
+    background-color: slateblue;
+    height: 20px;
+    border: none;
+    font-size: 0.7em;
+    color: white;
+    border-radius: 5px;
+}
+
+.submit_button:hover {
+    cursor: pointer;
+}
+.close_button:hover {
+    cursor: pointer;
+}

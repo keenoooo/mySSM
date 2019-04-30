@@ -4,7 +4,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 
 /**
- * Created by sss on 2017/10/18.
+ * Created by sss on 2019/10/18.
  */
 @Aspect
 public class OnlyOneUser {

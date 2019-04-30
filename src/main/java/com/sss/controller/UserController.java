@@ -1,5 +1,8 @@
 package com.sss.controller;
 
+import com.alibaba.fastjson.JSONObject;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sss.bean.UserAddressBean;
 import com.sss.bean.GoodsCarBean;
 import com.sss.bean.ShopInformationBean;
@@ -7,8 +10,10 @@ import com.sss.bean.UserWantBean;
 import com.sss.pojo.*;
 import com.sss.service.*;
 import com.sss.token.TokenProccessor;
+import com.sss.tool.Const;
 import com.sss.tool.SaveSession;
 import com.sss.tool.StringUtils;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +30,7 @@ import java.math.BigDecimal;
 import java.util.*;
 
 /**
- * Created by sss on 2017/5/9.
+ * Created by sss on 2019/5/9.
  */
 @Controller
 public class UserController {
@@ -129,7 +134,7 @@ public class UserController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(HttpServletRequest request,Model model,
                      @RequestParam String phone, @RequestParam String password, @RequestParam String token) {
-        String loginToken = (String) request.getSession().getAttribute("token");
+        String loginToken = (String) request.getSession().getAttribute(Const.TOKEN);
         if (StringUtils.getInstance().isNullOrEmpty(phone) || StringUtils.getInstance().isNullOrEmpty(password)) {
             return "redirect:/login";
         }
@@ -719,7 +724,6 @@ public class UserController {
             shopInformation.setModified(new Date());
             shopInformation.setImage(random);//This is the other uniquely identifies
             shopInformation.setThumbnails(save);
-//        shopInformation.setUid(4);
             int uid = (int) request.getSession().getAttribute("uid");
             shopInformation.setUid(uid);
             try {
@@ -985,13 +989,20 @@ public class UserController {
     @RequestMapping(value = "/modifiedAddress" /*,method = RequestMethod.POST*/)
     public String modifiedUserAddress(HttpServletRequest request,Model model,
                                       @RequestParam String reciver,
-                                      @RequestParam String phone,@RequestParam String address/*,
+                                      @RequestParam String phone,
+                                      @RequestParam String address/*,
+                                      @RequestParam Integer uid,
                                       @RequestParam String action*/){
         int action = 1;
-
-        UserInformation userInformation = (UserInformation) request.getSession().getAttribute("userInfomation");
-        HttpSession session = request.getSession();
+        Integer uid = Integer.valueOf((String) request.getAttribute("uid"));
+        UserInformation userInformation;
+        HttpSession session =  request.getSession();
+        userInformation = (UserInformation) request.getSession().getAttribute("userInfomation");
+        if(userInformation==null){
+            return "redirect:login";
+        }
         int result = 0;
+
         if(1 == action){
             UserAddressBean userAddressBean = new UserAddressBean();
             if(!StringUtils.getInstance().isNullOrEmpty(reciver) && !StringUtils.getInstance().isNullOrEmpty(phone)
@@ -999,7 +1010,7 @@ public class UserController {
                 userAddressBean.setReciver(reciver);
                 userAddressBean.setPhone(phone);
                 userAddressBean.setAddress(address);
-                userAddressBean.setUid(1);
+                userAddressBean.setUid(uid);
             }
             try{
                 if(userAddressBean !=null) {
@@ -1014,14 +1025,23 @@ public class UserController {
 
         }else if("2".equals(action)){
             UserAddressBean userAddress = (UserAddressBean)session.getAttribute("userAddress");
-
+            if(StringUtils.getInstance().isNullOrEmpty(uid)) {
+                List<UserAddressBean> addressBeans = userAddressService.selectAddressByUid(uid);
+            }
         }
         return "redirect:login";
     }
 
     //添加收货地址
     @RequestMapping("/open_modified_address")
-    public String openModifiedAddress(HttpServletRequest req){
+    public String openModifiedAddress(HttpServletRequest req,Model model) throws JsonProcessingException {
+        UserInformation userInformation = (UserInformation) req.getSession().getAttribute("userInformation");
+        //引入Json进行userinformation信息的传递
+        //String UserInfoJson = JSONObject.toJSONString(userInformation);
+        //ObjectMapper mapper = new ObjectMapper();
+        //mapper.writeValueAsString(userInformation);
+        String uid = (String)req.getAttribute("uid");
+        model.addAttribute("uid",uid);
         return "page/modified_address";
     }
 

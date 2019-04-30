@@ -2,6 +2,8 @@ package com.sss.dao;
 
 import com.sss.pojo.AdminInformation;
 
+import java.util.List;
+
 public interface AdminInformationMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -15,5 +17,5 @@ public interface AdminInformationMapper {
 
     int updateByPrimaryKey(AdminInformation record);
 
-    AdminInformation selectByNo(int ano);
+    List<AdminInformation> selectByNo(int ano);
 }

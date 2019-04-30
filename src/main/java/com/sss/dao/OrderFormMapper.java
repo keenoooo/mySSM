@@ -5,13 +5,13 @@ import com.sss.pojo.OrderForm;
 import java.util.List;
 
 public interface OrderFormMapper {
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(OrderForm record);
 
     int insertSelective(OrderForm record);
 
-    OrderForm selectByPrimaryKey(Integer id);
+    OrderForm selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(OrderForm record);
 

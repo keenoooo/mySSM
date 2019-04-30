@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class OrderForm implements Serializable {
-    private Integer id;
+    private Long id;
 
     private Date modified;
 
@@ -16,11 +16,11 @@ public class OrderForm implements Serializable {
 
     private String context;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

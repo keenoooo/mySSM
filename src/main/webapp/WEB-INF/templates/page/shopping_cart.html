@@ -27,7 +27,7 @@
         <div th:if="${userAddress}==null" class="shipping_address" id="10002">
             <br/>
             <br/>
-            <img src="/img/add_cartaddress.png" class="insert_address"/><br/>
+            <img src="/img/add_cartaddress.png" class="insert_address" th:value="${userInformation.id}"/><br/>
             <span class="icon_front">添加地址</span>
             <br/>
             <br/>

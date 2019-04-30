@@ -1,0 +1,31 @@
+
+body {font-family:"microsoft yahei";}
+ul {list-style:none;margin:0px;padding:0px;}
+a {text-decoration:none;outline:none;}
+/********** global *********/
+#header {height:70px;overflow:hidden;}
+#header .logo {display:block;margin:5px;height:60px;}
+#header .top-btns {position:absolute;top:20px;right:15px;}
+#header .top-btns span {vertical-align:middle;}
+
+
+#footer {height:35px;line-height:28px;text-align:center;font-weight:bold;color:#1542a4;background:#d2e0f2;overflow:hidden;}
+
+#leftMenu {width: 220px;}
+.menu {margin-top:5px;}
+.menu li {margin:10px 15px;}
+.menu li a {
+	display:block;
+	height:32px;
+	line-height:32px;
+	padding-left:36px;
+	font-size:14px;
+	font-weight:bold;
+	color:#333;
+	border:1px solid #fff;
+	background-repeat:no-repeat;
+	background-position:10px center;
+	background-image:url("/img/root/item-default.png");
+}
+.menu li.active a,
+.menu li a:hover {color:#1542a4;background-color:#e0ecff;border-color:#99bbe8;}

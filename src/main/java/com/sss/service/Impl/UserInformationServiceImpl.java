@@ -9,7 +9,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * Created by Maibenben on 2017/4/26.
+ * Created by Maibenben on 2019/4/26.
  */
 @Service("userInformationService")
 public class UserInformationServiceImpl implements UserInformationService {

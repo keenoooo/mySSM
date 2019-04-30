@@ -1604,15 +1604,15 @@ CREATE TABLE `userinformation` (
 -- ----------------------------
 -- Records of userinformation
 -- ----------------------------
-INSERT INTO `userinformation` VALUES ('1', '2017-05-14 13:56:04', 'wsk', '123', null, null, null, null, null, '2017-05-14 13:56:04', null);
-INSERT INTO `userinformation` VALUES ('2', '2017-05-14 14:00:13', '111', '1234', null, null, null, null, null, '2017-05-14 14:00:14', null);
-INSERT INTO `userinformation` VALUES ('3', '2017-05-14 14:55:28', '111', '122', null, null, null, null, null, '2017-05-14 14:55:28', null);
-INSERT INTO `userinformation` VALUES ('4', '2017-05-14 15:00:11', '爱我的人1', '124', null, null, null, null, null, '2017-05-14 15:00:11', null);
-INSERT INTO `userinformation` VALUES ('5', '2017-05-14 15:00:45', '爱我的人2', '125', null, null, null, null, null, '2017-05-14 15:00:45', null);
-INSERT INTO `userinformation` VALUES ('6', '2017-05-14 15:01:13', '爱我的人3', '126', null, null, null, null, null, '2017-05-14 15:01:13', null);
-INSERT INTO `userinformation` VALUES ('7', '2017-05-19 14:43:01', 'sss', '127', '吴树楷', '信计142', '3', '9407', '男', '2017-05-20 15:14:14', '');
-INSERT INTO `userinformation` VALUES ('8', '2017-05-20 22:31:08', 'sss', '128', null, null, null, null, null, '2017-05-20 22:31:03', null);
-INSERT INTO `userinformation` VALUES ('9', '2018-09-09 15:34:18', 'test', '129', null, null, null, null, null, '2018-09-09 15:34:17', null);
+INSERT INTO `userinformation` VALUES ('1', '2017-05-14 13:56:04', 'wsk', '123', null, null, null, null, null, '2019-05-14 13:56:04', null);
+INSERT INTO `userinformation` VALUES ('2', '2017-05-14 14:00:13', '111', '1234', null, null, null, null, null, '2019-05-14 14:00:14', null);
+INSERT INTO `userinformation` VALUES ('3', '2017-05-14 14:55:28', '111', '122', null, null, null, null, null, '2019-05-14 14:55:28', null);
+INSERT INTO `userinformation` VALUES ('4', '2017-05-14 15:00:11', '343', '124', null, null, null, null, null, '2019-05-14 15:00:11', null);
+INSERT INTO `userinformation` VALUES ('5', '2017-05-14 15:00:45', '342', '125', null, null, null, null, null, '2019-05-14 15:00:45', null);
+INSERT INTO `userinformation` VALUES ('6', '2017-05-14 15:01:13', '5555', '126', null, null, null, null, null, '2019-05-14 15:01:13', null);
+INSERT INTO `userinformation` VALUES ('7', '2017-05-19 14:43:01', 'sss', '127', '1', '1', '1', '9407', '男', '2019-05-20 15:14:14', '');
+INSERT INTO `userinformation` VALUES ('8', '2017-05-20 22:31:08', 'sss', '128', null, null, null, null, null, '2019-05-20 22:31:03', null);
+INSERT INTO `userinformation` VALUES ('9', '2018-09-09 15:34:18', 'test', '129', null, null, null, null, null, '2019-09-09 15:34:17', null);
 
 -- ----------------------------
 -- Table structure for userpassword

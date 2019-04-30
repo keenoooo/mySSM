@@ -1,7 +1,7 @@
 package com.sss.token;
 
 /**
- * Created by Maibenben on 2017/4/28.
+ * Created by Maibenben on 2019/4/28.
  */
 
 import sun.misc.BASE64Encoder;
